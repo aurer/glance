@@ -96,7 +96,7 @@ export function CoinForm() {
                 <FormItem>
                   <FormLabel>Coin</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter coin name" {...field} />
+                    <Input placeholder="Enter coin name" {...field} autoComplete="off" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -111,10 +111,12 @@ export function CoinForm() {
                   <FormLabel>Amount</FormLabel>
                   <FormControl>
                     <Input 
-                      type="number" 
-                      step="any"
+                      type="text" 
+                      inputMode="decimal"
+                      pattern="[0-9]*[.,]?[0-9]*"
                       placeholder="Enter amount" 
                       {...field}
+                      autoComplete="off"
                       onChange={e => field.onChange(Number(e.target.value))}
                     />
                   </FormControl>
