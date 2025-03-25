@@ -1,54 +1,79 @@
-# React + TypeScript + Vite
+# Glance
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple portfolio tracker for cryptocurrencies built with React, TypeScript, and Vite. Features include adding, editing, and deleting coins from your portfolio using a modern UI built with shadcn/ui components and styled with Tailwind CSS. State management is handled through Jotai for a lightweight and efficient user experience.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 📊 Track your cryptocurrency portfolio across multiple wallets and exchanges
+- 💰 Real-time price updates for supported cryptocurrencies
+- 📱 Modern, responsive UI built with shadcn/ui components
+- 🎨 Clean design with Tailwind CSS
+- 🔄 Efficient state management with Jotai
+- 🔒 Secure local storage of portfolio data
+- 📈 Portfolio performance tracking
+- 🎯 Add, edit, and remove cryptocurrencies from your portfolio
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- Node.js (v16 or higher)
+- Yarn package manager
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/glance.git
+cd glance
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+2. Install dependencies:
+```bash
+yarn install
 ```
+
+3. Start the development server:
+```bash
+yarn dev
+```
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+## Development
+
+### Project Structure
+
+```
+glance/
+├── src/
+│   ├── components/     # React components
+│   ├── hooks/         # Custom React hooks
+│   ├── store/         # Jotai atoms and state management
+│   ├── types/         # TypeScript type definitions
+│   └── utils/         # Utility functions
+├── public/            # Static assets
+└── index.html         # Entry HTML file
+```
+
+### Available Scripts
+
+- `yarn dev` - Start development server
+- `yarn build` - Build for production
+- `yarn preview` - Preview production build
+- `yarn lint` - Run ESLint
+- `yarn type-check` - Run TypeScript type checking
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- [shadcn/ui](https://ui.shadcn.com/) for the beautiful components
+- [Tailwind CSS](https://tailwindcss.com/) for the styling
+- [Jotai](https://jotai.org/) for state management
+- [Vite](https://vitejs.dev/) for the build tool
+
+
+
