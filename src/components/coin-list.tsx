@@ -1,15 +1,16 @@
 import { useAtomValue, useSetAtom } from "jotai"
 import { editorAtom } from "~/atoms/editorAtom"
-import { coinsAtom, coinsDataAtom } from "../atoms/coinsAtom"
-import { Button } from "./ui/button"
-import { PlusIcon } from "lucide-react"
+import { coinsAtom, coinsDataAtom, loadableCoinsData } from '../atoms/coinsAtom'
+import { Button } from './ui/button'
+import { PlusIcon } from 'lucide-react'
 
 export function CoinList() {
-  const coins = useAtomValue(coinsAtom)
-  const coinsData = useAtomValue(coinsDataAtom)
-  const setEditor = useSetAtom(editorAtom);
+	const coins = useAtomValue(coinsAtom)
+	const coinsData = useAtomValue(coinsDataAtom)
+	const setEditor = useSetAtom(editorAtom)
+	const coinsLoading = useAtomValue(loadableCoinsData)
 
-  const handleAddCoin = () => {
+	const handleAddCoin = () => {
 		setEditor({ coin: { coin: '', amount: 0 }, index: -1 })
 	}
 
@@ -17,7 +18,11 @@ export function CoinList() {
 		setEditor({ coin: coins[index], index })
 	}
 
-  return (
+	if (coinsLoading.state === 'loading') {
+		return <div>Loading...</div>
+	}
+
+	return (
 		<div>
 			<ul className="mb-4">
 				{coins.map((coin, index) => (

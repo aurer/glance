@@ -1,30 +1,32 @@
 'use client'
 import axios from 'axios';
-import { atom } from 'jotai';
-import { atomWithStorage } from 'jotai/utils';
+import { atomWithRefresh, atomWithStorage, loadable } from 'jotai/utils'
 
 export type Coin = {
-  coin: string;
-  amount: number;
-};
+	coin: string
+	amount: number
+}
 
-export const coinsAtom = atomWithStorage<Coin[]>('coins', []);
+export type CoinData = Record<string, { gbp: number }>
 
-export const coinsDataAtom = atom(async (get) => {
-  const coins = get(coinsAtom);
+export const coinsAtom = atomWithStorage<Coin[]>('coins', [])
 
-  if (coins.length === 0) {
-    return {};
-  }
+export const coinsDataAtom = atomWithRefresh(async (get) => {
+	const coins = get(coinsAtom)
 
-  const coinIds = coins.map(c => c.coin).join(',');
+	if (coins.length === 0) {
+		return {} as CoinData
+	}
 
-  const prices = await axios.get<Record<string, { gbp: number }>>(
-    `https://api.coingecko.com/api/v3/simple/price?ids=${coinIds}&vs_currencies=gbp`
-  ).catch(err => {
-    console.error(err);
-    return { data: {} };
-  });
+	const coinIds = coins.map((c) => c.coin).join(',')
 
-  return prices.data;
-});
+	return axios
+		.get<CoinData>(`https://api.coingecko.com/api/v3/simple/price?ids=${coinIds}&vs_currencies=gbp`)
+		.then((res) => res.data)
+		.catch((err) => {
+			console.error(err)
+			return {} as CoinData
+		})
+})
+
+export const loadableCoinsData = loadable(coinsDataAtom)
