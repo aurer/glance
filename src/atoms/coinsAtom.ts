@@ -1,6 +1,7 @@
 'use client'
 import axios from 'axios';
 import { atomWithRefresh, atomWithStorage, loadable } from 'jotai/utils'
+import { toast } from 'sonner'
 
 export type Coin = {
 	coin: string
@@ -24,7 +25,7 @@ export const coinsDataAtom = atomWithRefresh(async (get) => {
 		.get<CoinData>(`https://api.coingecko.com/api/v3/simple/price?ids=${coinIds}&vs_currencies=gbp`)
 		.then((res) => res.data)
 		.catch((err) => {
-			console.error(err)
+			toast.error('Error fetching coin data', { description: err.message })
 			return {} as CoinData
 		})
 })
