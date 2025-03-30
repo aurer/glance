@@ -7,13 +7,12 @@ import { coinsAtom } from "~/atoms/coinsAtom";
 import { editorAtom } from "~/atoms/editorAtom";
 import { Button } from "~/components/ui/button";
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle
-} from "~/components/ui/dialog";
+	Dialog,
+	DialogContent,
+	DialogFooter,
+	DialogHeader,
+	DialogTitle,
+} from '~/components/ui/dialog'
 import {
   Form,
   FormControl,
