@@ -9,19 +9,20 @@ import { Button } from "~/components/ui/button";
 import {
 	Dialog,
 	DialogContent,
+	DialogDescription,
 	DialogFooter,
 	DialogHeader,
 	DialogTitle,
 } from '~/components/ui/dialog'
 import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "~/components/ui/form";
-import { Input } from "~/components/ui/input";
+	Form,
+	FormControl,
+	FormField,
+	FormItem,
+	FormLabel,
+	FormMessage,
+} from '~/components/ui/form'
+import { Input } from '~/components/ui/input'
 import { Autocomplete } from './autocomplete'
 
 const formSchema = z.object({
@@ -83,6 +84,9 @@ export function CoinForm() {
 					<DialogTitle>
 						{mode === 'add' ? 'Add a Coin' : 'Edit ' + (editor?.coin.coin ?? '')}
 					</DialogTitle>
+					<DialogDescription>
+						{mode === 'add' ? 'Add a new coin to your portfolio' : 'Edit the coin details'}
+					</DialogDescription>
 				</DialogHeader>
 				{Boolean(editor) && (
 					<Form {...form}>
@@ -94,7 +98,16 @@ export function CoinForm() {
 									<FormItem>
 										<FormLabel>Coin</FormLabel>
 										<FormControl>
-											<Autocomplete placeholder="Enter coin name" {...field} />
+											<Autocomplete
+												placeholder="Enter coin name"
+												{...field}
+												disabled={mode === 'edit'}
+												defaultOpen={mode == 'add'}
+												onChange={(value) => {
+													field.onChange(value)
+													form.setFocus('amount')
+												}}
+											/>
 										</FormControl>
 										<FormMessage />
 									</FormItem>

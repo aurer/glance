@@ -10,12 +10,16 @@ import { Toaster } from '~/components/ui/sonner'
 function App() {
 	const [_, refresh] = useAtom(coinsDataAtom)
 
+	const handleRefresh = () => {
+		refresh()
+	}
+
 	return (
 		<div>
 			<header className="bg-card p-4">
 				<div className="max-w-xl mx-auto flex justify-center items-center gap-2">
 					<h1 className="text-2xl font-light text-center tracking-[0.5em] uppercase">Glance</h1>
-					<Button size="icon" variant="ghost" onClick={() => refresh()}>
+					<Button size="icon" variant="ghost" onClick={handleRefresh}>
 						<RefreshCcwIcon />
 					</Button>
 				</div>
