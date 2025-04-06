@@ -3,6 +3,7 @@ import { editorAtom } from "~/atoms/editorAtom"
 import { coinsAtom, coinsDataAtom, loadableCoinsData } from '../atoms/coinsAtom'
 import { Button } from './ui/button'
 import { PlusIcon } from 'lucide-react'
+import CoinListItem from './coin-list-item'
 
 export function CoinList() {
 	const coins = useAtomValue(coinsAtom)
@@ -26,19 +27,12 @@ export function CoinList() {
 		<div>
 			<ul className="mb-4">
 				{coins.map((coin, index) => (
-					<li
+					<CoinListItem
 						key={index}
-						className="flex gap-2 items-start justify-between mb-2"
 						onClick={handleEditCoin(index)}
-					>
-						<span>
-							{coin.coin}
-							<span className="block text-xs text-gray-500">{coin.amount.toFixed(4)}</span>
-						</span>
-						<span className="text-right">
-							&pound;{((coinsData[coin.coin]?.gbp ?? 0) * coin.amount).toFixed(2)}
-						</span>
-					</li>
+						coin={coin}
+						coinData={coinsData[coin.coin]}
+					/>
 				))}
 			</ul>
 			<Button

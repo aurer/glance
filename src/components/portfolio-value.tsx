@@ -1,6 +1,7 @@
 import { useAtomValue } from 'jotai';
 import { coinsAtom, coinsDataAtom } from '../atoms/coinsAtom';
 import { useEffect, useRef, useState } from 'react'
+import { formatValue } from '~/lib/utils'
 
 export function PortfolioValue() {
 	const coins = useAtomValue(coinsAtom)
@@ -27,7 +28,9 @@ export function PortfolioValue() {
 			<div className="text-right leading-0">
 				<p className="text-2xl">&pound;{formatValue(total)}</p>
 				{valueDiff !== null && (
-					<small className={`text-sm ${valueDiff > 0 ? 'text-green-500' : 'text-red-500'}`}>
+					<small
+						className={`text-sm leading-2 ${valueDiff > 0 ? 'text-green-500' : 'text-red-500'}`}
+					>
 						{valueDiff > 0 ? '+' : '-'}
 						&pound;{formatValue(Math.abs(valueDiff))}
 					</small>
@@ -36,10 +39,3 @@ export function PortfolioValue() {
 		</div>
 	)
 }
-
-function formatValue(value: number) {
-	return (
-		value?.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) ??
-		'0.00'
-	)
-} 
