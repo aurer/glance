@@ -5,12 +5,7 @@ A simple portfolio tracker for cryptocurrencies built with React, TypeScript, an
 ## Features
 
 - 📊 Track your cryptocurrency portfolio across multiple wallets and exchanges
-- 💰 Real-time price updates for supported cryptocurrencies
-- 📱 Modern, responsive UI built with shadcn/ui components
-- 🎨 Clean design with Tailwind CSS
-- 🔄 Efficient state management with Jotai
-- 🔒 Secure local storage of portfolio data
-- 📈 Portfolio performance tracking
+- 💰 Price updates for supported cryptocurrencies
 - 🎯 Add, edit, and remove cryptocurrencies from your portfolio
 
 ## Getting Started
@@ -47,11 +42,11 @@ yarn dev
 ```
 glance/
 ├── src/
-│   ├── components/     # React components
-│   ├── hooks/         # Custom React hooks
-│   ├── store/         # Jotai atoms and state management
-│   ├── types/         # TypeScript type definitions
-│   └── utils/         # Utility functions
+│   ├── api/					 # Axios API abstractions
+│   ├── components/    # React components
+│   │   ├── ui/				 # Shadcn/ui components
+│   ├── atoms/         # Jotai atoms and state management
+│   └── lib/           # Utility functions
 ├── public/            # Static assets
 └── index.html         # Entry HTML file
 ```
@@ -59,10 +54,10 @@ glance/
 ### Available Scripts
 
 - `yarn dev` - Start development server
+- `yarn check` - Check for TS errors
 - `yarn build` - Build for production
-- `yarn preview` - Preview production build
 - `yarn lint` - Run ESLint
-- `yarn type-check` - Run TypeScript type checking
+- `yarn preview` - Preview production build
 
 ## License
 
@@ -74,6 +69,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - [Tailwind CSS](https://tailwindcss.com/) for the styling
 - [Jotai](https://jotai.org/) for state management
 - [Vite](https://vitejs.dev/) for the build tool
-
-
-
