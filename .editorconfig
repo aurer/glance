@@ -1,0 +1,6 @@
+# .editorconfig file
+
+root = true
+
+[*]
+print_width = 120
