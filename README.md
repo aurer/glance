@@ -1,6 +1,12 @@
 # Glance
 
-A simple portfolio tracker for cryptocurrencies built with React, TypeScript, and Vite. Features include adding, editing, and deleting coins from your portfolio using a modern UI built with shadcn/ui components and styled with Tailwind CSS. State management is handled through Jotai for a lightweight and efficient user experience.
+A simple web app designed to help track cryptocurrencies. Built with React, TypeScript, and Vite. 
+
+Features include adding, editing, and deleting coins from your portfolio using a modern UI built with shadcn/ui components and styled with Tailwind CSS. 
+
+State management is handled through Jotai for a lightweight and efficient user experience.
+
+[https://glance-portfolio.netlify.app/](https://glance-portfolio.netlify.app/)
 
 ## Features
 
